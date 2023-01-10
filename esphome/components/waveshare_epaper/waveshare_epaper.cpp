@@ -486,14 +486,14 @@ void HOT WaveshareEPaperTypeA::display() {
       this->write_array(this->buffer_, this->get_buffer_length_());
   }
   this->end_data_();
-+  if (this->model_ == WAVESHARE_EPAPER_1_54_IN_V2 && full_update)
-+  {
-+    // COMMAND WRITE "RED" RAM
-+    this->command(0x26);
-+    this->start_data_();
-+    this->write_array(this->buffer_, this->get_buffer_length_());
-+    this->end_data_();
-+  }
+  if (this->model_ == WAVESHARE_EPAPER_1_54_IN_V2 && full_update)
+  {
+    // COMMAND WRITE "RED" RAM
+    this->command(0x26);
+    this->start_data_();
+    this->write_array(this->buffer_, this->get_buffer_length_());
+    this->end_data_();
+  }
 
   // COMMAND DISPLAY UPDATE CONTROL 2
   this->command(0x22);
