@@ -486,14 +486,6 @@ void HOT WaveshareEPaperTypeA::display() {
       this->write_array(this->buffer_, this->get_buffer_length_());
   }
   this->end_data_();
-  if (this->model_ == WAVESHARE_EPAPER_1_54_IN_V2 && full_update)
-  {
-    // COMMAND WRITE "RED" RAM
-    this->command(0x26);
-    this->start_data_();
-    this->write_array(this->buffer_, this->get_buffer_length_());
-    this->end_data_();
-  }
 
   // COMMAND DISPLAY UPDATE CONTROL 2
   this->command(0x22);
@@ -521,10 +513,10 @@ void HOT WaveshareEPaperTypeA::display() {
   this->status_clear_warning();
 
     // switch to partial update and update display
-  // if ((this->model_ == WAVESHARE_EPAPER_1_54_IN_V2) && (this->full_update_every_ >= 1) && full_update) {
-  //   delay(2000);
-  //   this->display();
-  // }
+  if ((this->model_ == WAVESHARE_EPAPER_1_54_IN_V2) && (this->full_update_every_ >= 1) && full_update) {
+    delay(2000);
+    this->display();
+  }
 
 }
 int WaveshareEPaperTypeA::get_width_internal() {
